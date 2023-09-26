@@ -45,3 +45,53 @@ for i = 1 to (n-1):
 - Best-case: 通常不會聚焦在Best-case上，因為太少發生了。
 - Worst-case: 通常為我們討論的焦點，因為它是執行時間的上界(upper-bound)
 - Average-case: 我們通常也不太會管，因為都跟Worst-case差不多慘。
+
+## 2.3 Designing Algorithm
+我們有許多設計演算法的方法:
+- Incremental approach
+    - e.g.: Insertion Sort
+- Divide-and-conquer
+    - e.g. Merge Sort
+    - Steps:
+        - 1. Divide (分割問題)
+        - 2. Conquer (解決問題)
+        - 3. Combine (合併問題)
+```
+MERGE-SORT(A, p, r)
+    // 終止條件
+    if p >= r:
+        return;
+
+    // 計算資料的中點
+    q = (p + r) / 2;
+    
+    // 開始遞回
+    MERGE-SORT(A, p, q);
+    MERGE-SORT(A, q + 1, r);
+
+    // 合併排序後的結果
+    MERGE(A, p, q, r);
+
+MERGE (A, p, q, r)
+    // Compute the length of Left, Right part of array.
+    n_L = q - p + 1;
+    n_R = r - q;
+
+    // Copy the left part of A into L, and the right part into R.
+    L[0:n_L] = A[0 : q - p];
+    R[0:n_R] = A[0 : r - q - 1];
+
+    // Start merging
+    p_L = 0, p_R = 0, k = 0;
+    while p_L < n_L and p_R < n_R:
+        if L[p_L] < R[p_R]:
+            A[k++] = L[p_L++];
+        else:
+            A[k++] = R[p_R++];
+
+    // Merge the remaining part
+    while p_L < n_L:
+        A[k++] = L[p_L++];
+    while p_R < n_R:
+        A[k++] = L[p_R++];
+```
