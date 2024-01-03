@@ -41,3 +41,15 @@ $$
 
 ### Theorem 3.1
 For any two functions $f, g$, $f(n) = \Theta(g(n))$ if and only if $f(n) = O(g(n))$ and $f(n) = \Omega(g(n))$.
+
+
+## Polynomial & Exponentials
+### Polynomials
+A function is **Polynomial bounded** if $f(n) = n^{O(1)}$.
+
+### Exponentials
+Any positive exponential function grows faster than any polynomial.
+
+### Logarithms
+
+### Factorials
